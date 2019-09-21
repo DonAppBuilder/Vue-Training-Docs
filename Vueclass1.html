@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <title>VueClass1</title>
+
+    <style>
+    .is-loading { background:red; }
+
+    .is-disabled { background: red }
+    </style>
+</head>
+<body>
+
+<div id="app1">
+    <input type="text" id="input" v-model="message">
+
+    <p>The value of the input is: {{ message }}</p>
+</div>
+
+<div id="app2">
+    <ul>
+        <li v-for="name in names" v-text="name"></li>
+    </ul>
+
+    <input id="input2" type="text" v-model="newName">
+
+    <button @click="addName">Add Name</button>
+
+</div>
+
+<div id="app3">
+    <button :title="title">Hover over me</button>
+</div>
+
+<div id="app4">
+    <button :class="{ 'is-loading': isLoading  }" @click="toggleClass">Toggle Color</button>
+
+</div>
+
+<div id="app5">
+    
+    <button @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'is-disabled': hover }">Disabled button</button>
+
+
+
+</div>
+    <script>
+
+    new Vue({
+        el: '#app1',
+        data: {
+            message: 'Hello World'
+        }    
+    });
+
+    var app = new Vue ({
+        el: '#app2',
+            data: {
+                newName: '',
+                names: ['Joe', 'Marry', 'Jane', 'Jack']
+
+            },
+
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+
+                    this.newName = '';
+                }
+
+            }
+
+
+    });
+    var app = new Vue ({
+        el: '#app3',
+        data: {
+            title: 'Now title is set through JS'
+        }
+    });
+
+        var app = new Vue ({
+        el: '#app4',
+        data: {
+            isLoading: false
+
+
+        },
+
+        methods: {
+            toggleClass() {
+                this.isLoading = true;
+            }
+        }
+    });
+
+        var app = new Vue ({
+        el: '#app5',
+            data() {
+                return {
+                    hover: false
+                }
+
+
+        },
+
+
+    });
+
+    </script>
+</body>
+</html>

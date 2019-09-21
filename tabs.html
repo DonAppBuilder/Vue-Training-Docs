@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"
+    />
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      body {
+        padding-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app1" class="container">
+      <tabs>
+        <tab name="About">
+          <h1>About Content</h1>
+        </tab>
+        <tab name="Home" :selected="true">
+          <h1>Home Content</h1>
+        </tab>
+        <tab name="Components">
+          <h1>Components Content</h1>
+        </tab>
+        <tab name="Lists">
+          <h1>Lists Content</h1>
+        </tab>
+      </tabs>
+
+      <div class="tab-panels"></div>
+    </div>
+    <script src="tabs.js"></script>
+  </body>
+</html>
