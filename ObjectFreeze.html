@@ -1,0 +1,17 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+  <p>{{ foo }}</p>
+  <button v-on:click="foo = 'baz'">Change it</button>
+</div>
+<script>
+  var obj = {
+    foo: "bar"
+  };
+
+  Object.freeze(obj);
+
+  new Vue({
+    el: "#app",
+    data: obj
+  });
+</script>

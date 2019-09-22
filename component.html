@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    <script src="https://unpkg.com/vue"></script>
+    <style type="text/css">body { padding-top: 40px; }</style>
+    
+    
+</head>
+<body>
+    <div id="app1" class="container">
+        <message title="Hello World" body="Testing the body"></message>
+        <message title="Hello Don" body="Testing the body again"></message>
+    
+</div>
+    <div id="app2" class="container">
+       <modal v-show="showModal" @close="showModal = false">
+            <p>
+                Just some random text
+            </p>
+
+       </modal>
+       <button @click="showModal = true">Show Modal</button>
+       
+    
+    </div>
+    <script src="component.js"></script>
+
+
+
+</body>
+</html>

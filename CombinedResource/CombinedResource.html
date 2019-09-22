@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"
+    />
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      body {
+        padding-top: 40px;
+      }
+      .h1 {
+        color: red;
+      }
+
+      .h2 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="resources" class="container">
+      <tabs>
+        <tab name="Home" :selected="true">
+          <h1 class="h1">
+            I am going to attempt to use each thing I learn in this Page
+          </h1>
+        </tab>
+        <tab name="Basics">
+          <h1 class="h1">The Basics</h1>
+          <p>{{ message }}</p>
+          <span v-bind:title="message" v-if="seen">
+            Hover your mouse over me for a few seconds to see my dynamically
+            bound Title! I can also change 'seen' to false and this message will
+            disappear!
+          </span>
+          <ol>
+            <li v-for="todo in todos">
+              {{ todo.text }}
+            </li>
+          </ol>
+          <button v-on:click="reverseMessage">
+            Reverse Message
+          </button>
+          <input v-model="message" />
+          <h2 class="h2">
+            {{ reversedMessage }}
+          </h2>
+          <h2 class="h2">Random Tasks</h2>
+          <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+          </ul>
+
+          <h1 class="h1">Incomplete Random Tasks</h1>
+          <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+          </ul>
+        </tab>
+        <tab name="Components">
+          <h1 class="h1">Components Content</h1>
+          <h2>I am already using components to make this page</h2>
+          <div id="resources" class="container">
+            <message title="Hello World" body="Testing the body"></message>
+            <message title="Hello Don" body="Testing the body again"></message>
+            <modal v-show="showModal" @close="showModal = false">
+              <p>
+                Just some random text
+              </p>
+            </modal>
+            <button @click="showModal = true">Show Modal</button>
+          </div>
+        </tab>
+        <tab name="Lists">
+          <h1 class="h1">Lists Content</h1>
+          <ol>
+            <todo-item
+              v-for="item in componentTasks"
+              v-bind:todo="item"
+              v-bind:key="item.id"
+            ></todo-item>
+          </ol>
+        </tab>
+      </tabs>
+      <div class="tab-panels"></div>
+    </div>
+    <script src="CombinedResource.js"></script>
+  </body>
+</html>

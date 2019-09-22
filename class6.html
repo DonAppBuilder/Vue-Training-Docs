@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Starting at class 6</title>
+</head>
+<body>
+    <div id="app6">
+        <h1>
+            {{ reversedMessage  }}
+
+        </h1>
+    </div>
+
+
+    <div id="app7">
+<h2>All Tasks for Dinner</h2>
+            <ul>
+                <li v-for="task in tasks" v-text="task.description"></li>
+            </ul>
+
+
+
+
+    <h1>Incomplete Tasks for Dinner</h1>
+            <ul>
+                <li v-for="task in incompleteTasks" v-text="task.description"></li>
+            </ul>
+
+
+    </div>
+
+    <script>
+    var app = new Vue ({
+        el: '#app6',
+
+        data: {
+            
+            message: 'Hello Don'
+    },
+    
+    computed: {
+
+        reversedMessage() {
+            return this.message.split('').reverse().join('');
+        }
+    }
+    
+    });
+
+        var app1 = new Vue ({
+        el: '#app7',
+
+        data: {
+            
+            tasks: [
+                { description: 'Go to the Store', completed: true },
+                { description: 'Get Groceries', completed: true },
+                { description: 'Pay for Groceries', completed: false },
+                { description: 'Load in Car', completed: false },
+                { description: 'Unload at home', completed: false },
+                { description: 'Cook dinner', completed: false }
+            ]
+    },
+    
+    computed: {
+
+        incompleteTasks() {
+            return this.tasks.filter(task => ! task.completed);
+
+
+        }
+        
+    }
+    
+    })
+    
+    
+    </script>
+</body>
+</html>
